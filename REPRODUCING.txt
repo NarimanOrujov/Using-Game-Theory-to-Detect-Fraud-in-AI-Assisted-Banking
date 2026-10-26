@@ -1,0 +1,103 @@
+USING GAME THEORY TO DETECT FRAUD IN AI-ASSISTED BANKING — REPRODUCTION AND SCOPE
+Revised 26 October 2026
+
+This is a theoretical working paper with completed synthetic computations.
+It contains no live language-model experiments, observed bank transactions,
+measured fraud reductions, or evidence of deployment readiness. Its proposed
+live-agent evaluation is explicitly future work. Nariman Orujov prompted
+this work; all other aspects of the work and paper preparation were carried
+out by AI agents. No affiliation, publication, or peer-review status is asserted.
+
+MAIN DELIVERABLES
+  using_game_theory_to_detect_fraud_in_ai_assisted_banking.pdf    Typeset manuscript
+  using_game_theory_to_detect_fraud_in_ai_assisted_banking.tex    LaTeX source
+  references.bib              Verified reference metadata and links
+  analysis/evidence_audit.py  Extended source-aware audit study
+  analysis/audit_game.py      Original three-route calculation
+  analysis/build_paper.py     One-command computation and PDF build
+  results/extended/           Full inputs, outputs, tables, figure, manifest
+
+DEPENDENCIES
+Python 3.12+ (the recorded run used 3.14.4), NumPy 2.5.4, SciPy 1.17.1,
+Matplotlib 3.10.7, and PyMuPDF 1.28.0 (metadata removal). The supplied
+environment used Matplotlib's distribution build 3.10.7+dfsg1. Exact numerical certificates have explicit tolerances;
+minor last-bit differences across architectures/solver builds are possible.
+The dependency pins are in analysis/requirements.txt.
+PDF builds need pdflatex and bibtex. Artifact verification also needs
+pdftotext (Poppler). The original small calculation needs only the standard library
+for numbers, Matplotlib for plots, and PyMuPDF to clean PDF metadata.
+
+STANDARD INSTALLATION IN AN ISOLATED ENVIRONMENT
+  python3 -m venv .venv
+  .venv/bin/python -m pip install -r analysis/requirements.txt
+  .venv/bin/python analysis/build_paper.py
+
+REPRODUCTION COMMANDS
+Run only the extended study after installing dependencies:
+  .venv/bin/python analysis/evidence_audit.py
+
+Rebuild the PDF from the included results:
+  .venv/bin/python analysis/build_paper.py --skip-compute
+
+Verify the included results and PDF:
+  python3 analysis/verify_artifacts.py
+
+Optionally reproduce the original three-route illustration:
+  .venv/bin/python analysis/audit_game.py
+
+Run commands from the repository root. Build logs go in results/build/ and
+are ignored by Git. The GitHub package contains the current PDF, editable
+LaTeX source, reference metadata, experiment programs, and extended results.
+The Word export and local revision backups are not part of this package.
+
+EXPERIMENT DESIGN
+100 evidence graphs, seeds 20261026 through 20261125 inclusive.
+Each has 6 routes, 5 evidence sources, 7 checks; source map (0,0,1,1,2,3,4).
+Every route has 2 or 3 randomly selected eligible sources. Route losses are
+integers 30 through 100. Initial reveal probabilities are uniform [.65,.95).
+Budgets 1 and 2 and disclosure probabilities 0, .25, .5 give 600 settings.
+Seven policies give 4,200 rows in all_policy_results.csv.
+
+Three design scenarios:
+  nominal: common failure .03, initial reveal probabilities;
+  A: common failure .15, source 0/1 reveal probabilities multiplied by .35;
+  B: common failure .15, source 2/3/4 reveal probabilities multiplied by .35.
+Held-out loss-matrix mixture: .2 nominal + .4 A + .4 B.
+Omitted adverse scenario: common failure .35, source 0/2 initial reveal
+probabilities multiplied by .15. No policy is fitted to that scenario. An
+outside-scenario oracle is stored only as a diagnostic.
+
+The source-aware model collapses repeated access to the SAME reveal outcome.
+It does not assert that every second inspection of a document is useless.
+A source's outcome can differ from a second inspection if the latter reveals
+new information; those must be modeled as separate, dependent outcomes.
+
+Finite-sample study: 100 graphs x 3 sample sizes (50, 200, 1000) at budget 2
+and disclosure .25. Each of 522 cells has independent synthetic Bernoulli
+outcomes scaled by route loss. Binomial counts implement those observations.
+No model APIs or bank data are used. Seed = 20261026 + 100000 + graph*10000 + n.
+The 95% bound is simultaneous WITHIN each generated loss matrix; the observed
+100/100 coverage at each n is descriptive, not a claim of universal coverage.
+
+VERIFICATION
+The extended run solves 4,523 defender LPs and their attacker duals, checks
+probability feasibility, exhaustively enumerates source states in a reference
+case, checks alias invariance, verifies the alias counterexample for budgets
+1 through 6, compares 103 disclosure-grid values with exact formulas, and
+checks perturbation and regret bounds. summary.json records maximum errors.
+
+Each graph contributes six related settings. The paper does not treat these
+as 600 independent bank observations or attach empirical bank-risk intervals.
+Most comparisons use exact expectations under known synthetic inputs; an
+optimizer's superiority on its own objective is expected by construction.
+The omitted-scenario losses and nominal cost of robustness are reported.
+
+MANIFEST AND RESULTS
+results/extended/manifest.json records SHA-256 hashes after each full run.
+Export scripts remove embedded PDF, image, and document metadata.
+Machine/version and elapsed-time fields are omitted from result JSON.
+Dependency versions remain documented above for reproducibility. Compare
+numerical CSVs and model inputs across platforms; PDF bytes may differ.
+The experiment and metadata-cleaning source hashes are included.
+To clean the paper and outputs again, run:
+  .venv/bin/python analysis/clean_metadata.py using_game_theory_to_detect_fraud_in_ai_assisted_banking.pdf results/extended assets --manifest results/extended/manifest.json

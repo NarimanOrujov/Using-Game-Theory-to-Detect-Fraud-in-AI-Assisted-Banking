@@ -1,0 +1,14 @@
+{
+  "all_policy_results.csv": "c27aeb531144c8e03774df0b5ee3c1c7e4faac8796a0b93886c337ab376e08e4",
+  "extended_results.pdf": "127d8682fa1028d9057bbbcec5cea977b28fe57fd309394ed9894a4635bf6218",
+  "extended_results.png": "ea3a79acedfc4fc8dd5d58acf3ae4e46066c69062828633d56aedb17414f42fc",
+  "instances.json": "f335c9523f7adca516b506d21db7777d9ff3581e6815e334a675450eaa3a8c4c",
+  "leakage_curve.csv": "c63cca1d1ed3907d3319452bcb60f929b696a36b1a34ad2df2bcb78ee80bfe58",
+  "policy_summary.csv": "56b59d9a0fd989e5cf3a1a283b4ed771e1ef96adb1f1db01459c8d67c95d0146",
+  "policy_table.tex": "83535a673e6607bc7c2513b26d70d5a0a68560904b4cde0455525d046b41b175",
+  "sampling_results.csv": "ac1e6c6ac73946331ac94161fcb73ccffef7b834a88098e2a126b75db937fb3c",
+  "sampling_table.tex": "f17e4408a0a2c3767a42be086d95d6c69cd1a549d9517763772f8ca4d1d9a528",
+  "summary.json": "9e3bbd9cc946e893e864b2254fde2456ed9de2e37ce5bc7beeca89a18cfddd2d",
+  "../../analysis/evidence_audit.py": "e85ee3ecc55b0b89f7d1fa771602eb51da7503320e0829f7a06457f5b4a98e37",
+  "../../analysis/clean_metadata.py": "49d33b4505cb29f80899c086813aaaa0f1dd18de2822d420fcef5d7d3a7dd096"
+}

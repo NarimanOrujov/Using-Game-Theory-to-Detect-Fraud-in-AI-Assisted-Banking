@@ -1,0 +1,112 @@
+{
+  "policies": [
+    {
+      "policy": "Uniform distinct sources",
+      "instances": 600,
+      "mean_normalized_envelope_loss": 0.7914934158826881,
+      "median_excess_loss": 12.047655457923426,
+      "p95_excess_loss": 20.26729573398942,
+      "mean_normalized_outside_loss": 0.8148519283626142,
+      "mean_duplicate_mass": 0.0
+    },
+    {
+      "policy": "Best fixed robust schedule",
+      "instances": 600,
+      "mean_normalized_envelope_loss": 0.7402605160922494,
+      "median_excess_loss": 6.295464890923306,
+      "p95_excess_loss": 20.36665982887658,
+      "mean_normalized_outside_loss": 0.7510939078905248,
+      "mean_duplicate_mass": 0.0
+    },
+    {
+      "policy": "Nominal minimax",
+      "instances": 600,
+      "mean_normalized_envelope_loss": 0.7405166113883866,
+      "median_excess_loss": 6.7235591074441,
+      "p95_excess_loss": 18.847590668760855,
+      "mean_normalized_outside_loss": 0.7309789884208497,
+      "mean_duplicate_mass": 0.0
+    },
+    {
+      "policy": "Average-scenario minimax",
+      "instances": 600,
+      "mean_normalized_envelope_loss": 0.7228347042696905,
+      "median_excess_loss": 5.016572211852175,
+      "p95_excess_loss": 15.697885571484811,
+      "mean_normalized_outside_loss": 0.7155019397518411,
+      "mean_duplicate_mass": 0.0
+    },
+    {
+      "policy": "Independent-check ablation",
+      "instances": 600,
+      "mean_normalized_envelope_loss": 0.6599809530875357,
+      "median_excess_loss": 0.0,
+      "p95_excess_loss": 3.4454743039983358,
+      "mean_normalized_outside_loss": 0.7323664725266563,
+      "mean_duplicate_mass": 0.03358114000980774
+    },
+    {
+      "policy": "Hidden-selection ablation",
+      "instances": 600,
+      "mean_normalized_envelope_loss": 0.6598223332145274,
+      "median_excess_loss": 0.0,
+      "p95_excess_loss": 2.759519461619562,
+      "mean_normalized_outside_loss": 0.7361721431912184,
+      "mean_duplicate_mass": 0.0
+    },
+    {
+      "policy": "Source-aware robust",
+      "instances": 600,
+      "mean_normalized_envelope_loss": 0.6546113498523948,
+      "median_excess_loss": 0.0,
+      "p95_excess_loss": 0.0,
+      "mean_normalized_outside_loss": 0.7296075077708819,
+      "mean_duplicate_mass": 0.0
+    }
+  ],
+  "sampling": [
+    {
+      "samples_per_cell": 50,
+      "replicates": 100,
+      "mean_normalized_regret": 0.03193305617999667,
+      "max_normalized_regret": 0.14081978596900768,
+      "uniform_events": 100,
+      "bound_covers": 100
+    },
+    {
+      "samples_per_cell": 200,
+      "replicates": 100,
+      "mean_normalized_regret": 0.011656314142323874,
+      "max_normalized_regret": 0.05726564334214422,
+      "uniform_events": 100,
+      "bound_covers": 100
+    },
+    {
+      "samples_per_cell": 1000,
+      "replicates": 100,
+      "mean_normalized_regret": 0.005807765772203686,
+      "max_normalized_regret": 0.01892849437726161,
+      "uniform_events": 100,
+      "bound_covers": 100
+    }
+  ],
+  "mean_nominal_price_of_robustness": 10.258835032163912,
+  "robust_worse_outside_than_nominal": 271,
+  "robust_envelope_exceeded_outside": 430,
+  "false_independence_bound_failures": 275,
+  "study_type": "Synthetic finite games; no LLM or bank experiments",
+  "seed": 20261026,
+  "topologies": 100,
+  "policy_instances": 600,
+  "sampling_replicates": 300,
+  "solves": 4523,
+  "max_primal_dual_gap": 2.773177243398095e-10,
+  "max_feasibility_error": 2.972733170736319e-12,
+  "checks": {
+    "joint_state_enumeration": "passed",
+    "duplicate_invariance": "passed",
+    "alias_counterexample_exhaustive_k1_to_k6": "passed",
+    "perturbation_and_regret_bounds": "passed",
+    "leakage_concavity": "passed"
+  }
+}
